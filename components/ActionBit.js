@@ -6,7 +6,7 @@ export default class ActionBit extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      light: null,
+      light: props.lights[0].label,
       h: null,
       s: null,
       b: null,
@@ -105,7 +105,7 @@ export default class ActionBit extends React.Component {
     this.props.save({
       id: this.props.action.id,
       light: this.state.light,
-      colour: this.state.h + '/' + this.state.s + '/' + this.state.b + '/' + this.state.k,
+      colour: (this.state.h || 0) + '/' + (this.state.s || 0) + '/' + (this.state.b || 100) + '/' + (this.state.k || 9000),
       delay: this.state.delay,
       tileColour: hsbToRGB(this.state.h || 0, this.state.s || 0, this.state.b || 100)
     })

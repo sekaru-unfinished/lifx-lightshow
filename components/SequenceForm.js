@@ -22,7 +22,7 @@ export default class ActionForm extends React.Component {
         <View style={styles.container}>
           <Text style={styles.heading}>New Sequence</Text>
         
-          <TouchableNativeFeedback onPress={() => this.addAction()}>
+          <TouchableNativeFeedback onPress={() => this.newAction()}>
             <Text>+ New Action</Text>
           </TouchableNativeFeedback>
 
@@ -34,15 +34,21 @@ export default class ActionForm extends React.Component {
             }
           </ScrollView>
 
-          <TouchableNativeFeedback onPress={() => this.props.close()}>
-            <Text>Close</Text>
-          </TouchableNativeFeedback>
+          <View style={styles.buttons}>
+            <TouchableNativeFeedback onPress={() => this.props.save(this.state.actions)}>
+              <Text>Add</Text>
+            </TouchableNativeFeedback>
+
+            <TouchableNativeFeedback onPress={() => this.props.close()}>
+              <Text>Close</Text>
+            </TouchableNativeFeedback>
+          </View>
         </View>
       </Modal>
     )
   }
 
-  addAction() {
+  newAction() {
     let actions = this.state.actions
 
     actions.push({
@@ -91,5 +97,9 @@ const styles = StyleSheet.create({
     fontSize: 32, 
     color: 'black',
     marginBottom: 24
+  },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   }
 })

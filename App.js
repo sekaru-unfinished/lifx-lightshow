@@ -11,6 +11,7 @@ export default class App extends React.Component {
 
     this.state = {
       lights: [],
+      sequences: [],
       showModal: false
     }
 
@@ -38,12 +39,12 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.actionsContainer} style={{flex: 1}}>
           {
-            this.state.lights.map(light => {
-              return <SequenceButton key={light.label} light={light} />
+            this.state.sequences.map((sequence, index) => {
+              return <SequenceButton key={index} sequence={sequence} lights={this.state.lights} />
             })
           }
 
-          <SequenceForm visible={this.state.showModal} close={() => this.setState({showModal: false})} lights={this.state.lights} />
+          <SequenceForm visible={this.state.showModal} lights={this.state.lights} close={() => this.setState({showModal: false})} save={this.saveSequence.bind(this)} />
         </ScrollView>
 
         <TouchableNativeFeedback onPress={() => this.setState({showModal: true})}>
@@ -51,6 +52,14 @@ export default class App extends React.Component {
         </TouchableNativeFeedback>
       </View>
     )
+  }
+
+  saveSequence(actions) {
+    let sequences = this.state.sequences
+    sequences.push({
+      actions: actions
+    })
+    this.setState({sequences: sequences, showModal: false})
   }
 }
 
