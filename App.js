@@ -43,7 +43,7 @@ export default class App extends React.Component {
             })
           }
 
-          <SequenceForm visible={this.state.showModal} close={() => this.setState({showModal: false})} />
+          <SequenceForm visible={this.state.showModal} close={() => this.setState({showModal: false})} lights={this.state.lights} />
         </ScrollView>
 
         <TouchableNativeFeedback onPress={() => this.setState({showModal: true})}>

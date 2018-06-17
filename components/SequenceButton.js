@@ -3,8 +3,9 @@ import { StyleSheet, Text, View, TouchableNativeFeedback, Dimensions } from 'rea
 import randColour from 'randomcolor'
 
 export default class ActionButton extends React.Component {
-  componentWillMount() {
-    this.setState({colour: randColour({luminosity: 'dark'})})
+  constructor(props) {
+    super(props)
+    this.state = {colour: randColour({luminosity: 'dark'})}
   }
 
   render() {
