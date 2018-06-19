@@ -1,0 +1,56 @@
+{
+  "label": "Disco Zombie Italia",
+  "colour": "rgb(255, 127, 80)",
+  "actions": [
+    {
+      "light": "Upstairs",
+      "colour": "50/100/100/9000",
+      "delay": 100
+    },
+    {
+      "light": "Upstairs",
+      "colour": "50/100/10/9000",
+      "delay": 200
+    },
+    {
+      "light": "Upstairs",
+      "colour": "80/100/100/9000",
+      "delay": 300
+    },
+    {
+      "light": "Upstairs",
+      "colour": "80/100/10/9000",
+      "delay": 400
+    },
+    {
+      "light": "Bedroom Light",
+      "colour": "180/100/10/9000",
+      "delay": 100
+    },
+    {
+      "light": "Bedroom Light",
+      "colour": "180/100/100/9000",
+      "delay": 200
+    },
+    {
+      "light": "Bedroom Light",
+      "colour": "210/100/10/9000",
+      "delay": 300
+    },
+    {
+      "light": "Bedroom Light",
+      "colour": "210/100/100/9000",
+      "delay": 400
+    },
+    {
+      "light": "Upstairs",
+      "colour": "50/100/100/9000",
+      "delay": 600
+    },
+    {
+      "light": "Bedroom Light",
+      "colour": "50/100/100/9000",
+      "delay": 600
+    }
+  ]
+}

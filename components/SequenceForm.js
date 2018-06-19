@@ -1,11 +1,12 @@
 import React from 'react'
-import { StyleSheet, View, Modal, Text, TouchableNativeFeedback, ScrollView } from 'react-native'
+import { StyleSheet, View, Modal, Text, TouchableNativeFeedback, ScrollView, TextInput } from 'react-native'
 import ActionBit from './ActionBit'
 
 export default class ActionForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      label: '',
       actions: []
     }
   }
@@ -21,7 +22,14 @@ export default class ActionForm extends React.Component {
         }}>
         <View style={styles.container}>
           <Text style={styles.heading}>New Sequence</Text>
-        
+
+          <TextInput style={{color: 'black', marginBottom: 16}} 
+                       onChangeText={t => this.setState({label: t})} 
+                       placeholder='Sequence name'
+                       value={this.state.label} 
+                       underlineColorAndroid='rgba(0, 0, 0, 0.35)' 
+                       placeholderTextColor='rgba(0, 0, 0, 0.35)' />
+
           <TouchableNativeFeedback onPress={() => this.newAction()}>
             <Text>+ New Action</Text>
           </TouchableNativeFeedback>
@@ -35,7 +43,7 @@ export default class ActionForm extends React.Component {
           </ScrollView>
 
           <View style={styles.buttons}>
-            <TouchableNativeFeedback onPress={() => this.props.save(this.state.actions)}>
+            <TouchableNativeFeedback onPress={() => this.props.save(this.state)}>
               <Text>Add</Text>
             </TouchableNativeFeedback>
 

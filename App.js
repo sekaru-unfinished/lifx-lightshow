@@ -4,6 +4,8 @@ import { StyleSheet, View, Text, TouchableNativeFeedback, ScrollView } from 'rea
 import { Client } from 'react-native-lifx'
 import SequenceButton from './components/SequenceButton'
 import SequenceForm from './components/SequenceForm'
+import defaultSequence from './utils/defaultsequence'
+import randColour from 'randomcolor'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -11,7 +13,7 @@ export default class App extends React.Component {
 
     this.state = {
       lights: [],
-      sequences: [],
+      sequences: [defaultSequence],
       showModal: false
     }
 
@@ -54,10 +56,12 @@ export default class App extends React.Component {
     )
   }
 
-  saveSequence(actions) {
+  saveSequence(sequence) {
     let sequences = this.state.sequences
     sequences.push({
-      actions: actions
+      label: sequence.label,
+      colour: randColour(),
+      actions: sequence.actions
     })
     this.setState({sequences: sequences, showModal: false})
   }
