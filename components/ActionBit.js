@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, TextInput, Picker, TouchableNativeFeedback } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Picker, TouchableNativeFeedback, Slider } from 'react-native'
 import { hsbToRGB, getLuminosity } from '../utils/colours'
 
 export default class ActionBit extends React.Component {
@@ -7,10 +7,10 @@ export default class ActionBit extends React.Component {
     super(props)
     this.state = {
       light: props.lights[0].label,
-      h: null,
-      s: null,
-      b: null,
-      k: null,
+      h: 0,
+      s: 0,
+      b: 100,
+      k: 2500,
       delay: null
     }
   }
@@ -25,7 +25,7 @@ export default class ActionBit extends React.Component {
             <Text style={{color: this.getTextColour()}}>{this.props.action.light}</Text>
             :
             <View>
-              <Picker style={{color: this.getTextColour()}} selectedValue={this.state.light} onValueChange={val => this.setState({light: val})}>
+              <Picker style={{color: this.getTextColour()}} selectedValue={this.state.light} onValueChange={val => this.setState({light: val})} mode='dropdown'>
                 {
                   this.props.lights.map(light => {
                     return <Picker.Item key={light.label} label={light.label} value={light.label} />
@@ -43,10 +43,17 @@ export default class ActionBit extends React.Component {
             <Text style={{color: this.getTextColour()}}>{this.props.action.colour}</Text> 
             :
             <View>
-              {this.textInput(h => this.setState({h}), "Hue (0-360)", this.state.h)}
-              {this.textInput(s => this.setState({s}), "Saturation (0-100)", this.state.s)}
-              {this.textInput(b => this.setState({b}), "Brightness (0-100)", this.state.b)}
-              {this.textInput(k => this.setState({k}), "Kelvin (2500-9000)", this.state.k)}
+              <Text style={{color: this.getSoftTextColour()}}>Hue</Text>
+              {this.slider(h => this.setState({h: Math.round(h)}), 0, 360, this.state.h)}
+
+              <Text style={{color: this.getSoftTextColour()}}>Saturation</Text>
+              {this.slider(s => this.setState({s: Math.round(s)}), 0, 100, this.state.s)}
+
+              <Text style={{color: this.getSoftTextColour()}}>Brightness</Text>
+              {this.slider(b => this.setState({b: Math.round(b)}), 0, 100, this.state.b)}
+
+              <Text style={{color: this.getSoftTextColour()}}>Kelvin</Text>
+              {this.slider(k => this.setState({k: Math.round(k)}), 2500, 9000, this.state.k)}
             </View>
           }
         </View>
@@ -55,10 +62,17 @@ export default class ActionBit extends React.Component {
           <Text style={[styles.heading, {color: this.getTextColour()}]}>After</Text>
           {
             this.props.action.delay ? 
-            <Text style={{color: this.getTextColour()}}>{this.props.action.delay}</Text>
+            <Text style={{color: this.getTextColour()}}>{this.props.action.delay}ms</Text>
             :
             <View>
-              {this.textInput(delay => this.setState({delay}), "Relative to the first action (in miliseconds)", this.state.delay)}
+              <TextInput 
+                style={{color: this.getTextColour()}} 
+                onChangeText={delay => this.setState({delay})} 
+                placeholder='Delay (ms relative to first action)'
+                value={this.state.delay} 
+                keyboardType='numeric' 
+                underlineColorAndroid={this.getSoftTextColour()} 
+                placeholderTextColor={this.getSoftTextColour()} />
             </View>
           }
         </View>
@@ -77,14 +91,15 @@ export default class ActionBit extends React.Component {
     )
   }
 
-  textInput(onChangeText, placeholder, value) {
-    return (<TextInput style={{color: this.getTextColour()}} 
-                       onChangeText={onChangeText} 
-                       placeholder={placeholder} 
-                       value={value} 
-                       keyboardType='numeric' 
-                       underlineColorAndroid={this.getSoftTextColour()} 
-                       placeholderTextColor={this.getSoftTextColour()} />)
+  slider(onChange, minVal, maxVal, value) {
+    return <Slider 
+              style={{marginBottom: 4}} 
+              onSlidingComplete={onChange} 
+              minimumValue={minVal} 
+              maximumValue={maxVal} 
+              value={value} 
+              minimumTrackTintColor={this.getSoftTextColour()} 
+              thumbTintColor={this.getTextColour()} />
   }
 
   checkLuminosity() {
@@ -98,7 +113,7 @@ export default class ActionBit extends React.Component {
   }
 
   getSoftTextColour() {
-    return this.checkLuminosity() > 186 ? 'rgba(0, 0, 0, 0.35)' : 'rgba(255, 255, 255, 0.35)'
+    return this.checkLuminosity() > 186 ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.5)'
   }
 
   save() {
@@ -131,10 +146,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#eee',
     marginTop: 8,
-    padding: 16
+    padding: 12
   },
   colourBit: {
-    marginVertical: 16
+    marginVertical: 8
   },
   heading: {
     fontSize: 16,
@@ -144,7 +159,8 @@ const styles = StyleSheet.create({
   actionButton: {
     flex: 1,
     alignSelf: 'center', 
-    marginTop: 12, 
-    fontWeight: 'bold'
+    marginTop: 8,
+    fontWeight: 'bold',
+    padding: 4,
   }
 })

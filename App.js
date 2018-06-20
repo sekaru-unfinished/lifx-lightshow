@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
   newAction: {
     color: '#fff',
     fontSize: 18,
-    margin: 4
+    margin: 4,
+    padding: 8
   }
 })

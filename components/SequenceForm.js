@@ -23,7 +23,7 @@ export default class ActionForm extends React.Component {
         <View style={styles.container}>
           <Text style={styles.heading}>New Sequence</Text>
 
-          <TextInput style={{color: 'black', marginBottom: 16}} 
+          <TextInput style={{color: 'black', marginBottom: 12}} 
                        onChangeText={t => this.setState({label: t})} 
                        placeholder='Sequence name'
                        value={this.state.label} 
@@ -31,7 +31,7 @@ export default class ActionForm extends React.Component {
                        placeholderTextColor='rgba(0, 0, 0, 0.35)' />
 
           <TouchableNativeFeedback onPress={() => this.newAction()}>
-            <Text>+ New Action</Text>
+            <Text style={[styles.button, {flex: null}]}>+ New Action</Text>
           </TouchableNativeFeedback>
 
           <ScrollView style={{marginVertical: 4}}>
@@ -44,11 +44,11 @@ export default class ActionForm extends React.Component {
 
           <View style={styles.buttons}>
             <TouchableNativeFeedback onPress={() => this.props.save(this.state)}>
-              <Text>Add</Text>
+              <Text style={[styles.button, {marginRight: 16}]}>Add</Text>
             </TouchableNativeFeedback>
 
             <TouchableNativeFeedback onPress={() => this.props.close()}>
-              <Text>Close</Text>
+              <Text style={styles.button}>Close</Text>
             </TouchableNativeFeedback>
           </View>
         </View>
@@ -99,15 +99,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-around',
-    padding: 24
+    padding: 16
   },
   heading: {
-    fontSize: 32, 
+    fontSize: 28, 
     color: 'black',
-    marginBottom: 24
   },
   buttons: {
     flexDirection: 'row',
     justifyContent: 'space-around'
+  },
+  button: {
+    flex: 1,
+    padding: 8,
+    textAlign: 'center',
+    fontSize: 16
   }
 })
