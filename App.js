@@ -46,7 +46,7 @@ export default class App extends React.Component {
             })
           }
 
-          <SequenceForm visible={this.state.showModal} lights={this.state.lights} close={() => this.setState({showModal: false})} save={this.saveSequence.bind(this)} />
+          {this.state.showModal ? <SequenceForm visible={true} lights={this.state.lights} close={() => this.setState({showModal: false})} save={this.saveSequence.bind(this)} /> : null}
         </ScrollView>
 
         <TouchableNativeFeedback onPress={() => this.setState({showModal: true})}>
@@ -61,6 +61,7 @@ export default class App extends React.Component {
     sequences.push({
       label: sequence.label,
       colour: randColour(),
+      loop: sequence.loop,
       actions: sequence.actions
     })
     this.setState({sequences: sequences, showModal: false})

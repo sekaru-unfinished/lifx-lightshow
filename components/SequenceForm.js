@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, Modal, Text, TouchableNativeFeedback, ScrollView, TextInput } from 'react-native'
+import { StyleSheet, View, Modal, Text, TouchableNativeFeedback, ScrollView, TextInput, CheckBox } from 'react-native'
 import ActionBit from './ActionBit'
 
 export default class ActionForm extends React.Component {
@@ -7,6 +7,7 @@ export default class ActionForm extends React.Component {
     super(props)
     this.state = {
       label: '',
+      loop: false,
       actions: []
     }
   }
@@ -21,14 +22,17 @@ export default class ActionForm extends React.Component {
           this.props.close()
         }}>
         <View style={styles.container}>
-          <Text style={styles.heading}>New Sequence</Text>
-
-          <TextInput style={{color: 'black', marginBottom: 12}} 
+          <TextInput style={{color: 'black', marginBottom: 12, fontSize: 28}} 
                        onChangeText={t => this.setState({label: t})} 
                        placeholder='Sequence name'
                        value={this.state.label} 
                        underlineColorAndroid='rgba(0, 0, 0, 0.35)' 
                        placeholderTextColor='rgba(0, 0, 0, 0.35)' />
+
+          <View style={styles.loopBox}>
+            <CheckBox onValueChange={loop => this.setState({loop})} value={this.state.loop} />
+            <Text>Loop?</Text>
+          </View>
 
           <TouchableNativeFeedback onPress={() => this.newAction()}>
             <Text style={[styles.button, {flex: null}]}>+ New Action</Text>
@@ -101,10 +105,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     padding: 16
   },
-  heading: {
-    fontSize: 28, 
-    color: 'black',
-  },
   buttons: {
     flexDirection: 'row',
     justifyContent: 'space-around'
@@ -114,5 +114,9 @@ const styles = StyleSheet.create({
     padding: 8,
     textAlign: 'center',
     fontSize: 16
+  },
+  loopBox: {
+    flexDirection: 'row',
+    alignItems: 'center'
   }
 })

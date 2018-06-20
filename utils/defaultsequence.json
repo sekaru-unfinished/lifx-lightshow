@@ -1,6 +1,7 @@
 {
   "label": "Disco Zombie Italia",
   "colour": "rgb(255, 127, 80)",
+  "loop": false,
   "actions": [
     {
       "light": "Upstairs",
