@@ -1,0 +1,160 @@
+[
+  {
+    "label": "Leather Teeth",
+    "colour": "rgb(200, 40, 180)",
+    "loop": false,
+    "actions": [
+      {
+        "light": "Upstairs",
+        "colour": "0/100/100/9000",
+        "delay": 100
+      },
+      {
+        "light": "Upstairs",
+        "colour": "0/100/10/9000",
+        "delay": 200
+      },
+      {
+        "light": "Upstairs",
+        "colour": "0/100/100/9000",
+        "delay": 300
+      },
+      {
+        "light": "Upstairs",
+        "colour": "0/0/10/9000",
+        "delay": 400
+      },
+      {
+        "light": "Upstairs",
+        "colour": "0/0/100/9000",
+        "delay": 500
+      },
+      {
+        "light": "Upstairs",
+        "colour": "0/0/10/9000",
+        "delay": 600
+      },
+      {
+        "light": "Upstairs",
+        "colour": "0/100/100/9000",
+        "delay": 700
+      },
+      {
+        "light": "Upstairs",
+        "colour": "0/100/10/9000",
+        "delay": 800
+      },
+      {
+        "light": "Upstairs",
+        "colour": "0/100/100/9000",
+        "delay": 900
+      },
+      {
+        "light": "Upstairs",
+        "colour": "0/100/10/9000",
+        "delay": 1000
+      },
+      {
+        "light": "Bedroom Light",
+        "colour": "260/100/10/9000",
+        "delay": 100
+      },
+      {
+        "light": "Bedroom Light",
+        "colour": "260/100/100/9000",
+        "delay": 200
+      },
+      {
+        "light": "Bedroom Light",
+        "colour": "260/100/10/9000",
+        "delay": 300
+      },
+      {
+        "light": "Bedroom Light",
+        "colour": "260/0/100/9000",
+        "delay": 400
+      },
+      {
+        "light": "Bedroom Light",
+        "colour": "260/0/10/9000",
+        "delay": 500
+      },
+      {
+        "light": "Bedroom Light",
+        "colour": "260/0/100/9000",
+        "delay": 600
+      },
+      {
+        "light": "Bedroom Light",
+        "colour": "260/100/10/9000",
+        "delay": 700
+      },
+      {
+        "light": "Bedroom Light",
+        "colour": "260/100/100/9000",
+        "delay": 800
+      },
+      {
+        "light": "Bedroom Light",
+        "colour": "260/100/10/9000",
+        "delay": 900
+      },
+      {
+        "light": "Bedroom Light",
+        "colour": "260/100/100/9000",
+        "delay": 1000
+      }
+    ]
+  },
+  {
+    "label": "Red",
+    "colour": "rgb(200, 0, 0)",
+    "loop": false,
+    "actions": [
+      {
+        "light": "Upstairs",
+        "colour": "0/100/100/9000",
+        "delay": 0
+      },
+      {
+        "light": "Bedroom Light",
+        "colour": "0/100/0/9000",
+        "delay": 0
+      }
+    ]
+  },
+  {
+    "label": "Purple",
+    "colour": "rgb(150, 50, 200)",
+    "loop": false,
+    "actions": [
+      {
+        "light": "Upstairs",
+        "colour": "0/100/0/9000",
+        "delay": 0
+      },
+      {
+        "light": "Bedroom Light",
+        "colour": "260/100/100/9000",
+        "delay": 0
+      }
+    ]
+  },
+  {
+    "label": "White",
+    "colour": "rgb(150, 150, 150)",
+    "loop": false,
+    "actions": [
+      {
+        "light": "Upstairs",
+        "colour": "0/0/100/9000",
+        "delay": 0
+      },
+      {
+        "light": "Bedroom Light",
+        "colour": "0/0/100/9000",
+        "delay": 0
+      }
+    ]
+  }
+]
